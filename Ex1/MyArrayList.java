@@ -35,6 +35,9 @@ public class MyArrayList <T>{
         return count;
     }
     public T get(int index){
+        if (index<0 || index>size()){
+            return null;
+        }
         return (T) array[index];
     }
     @Override
