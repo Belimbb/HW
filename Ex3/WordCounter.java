@@ -2,10 +2,7 @@ package ForGit.Ex3;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class WordCounter {
     private final File file;
@@ -33,6 +30,15 @@ public class WordCounter {
                 hashMap.put(elem, 1);
             }
         }
-        System.out.println(hashMap);
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(hashMap.entrySet());
+
+        entryList.sort(Map.Entry.comparingByValue());
+        Collections.reverse(entryList);
+
+        Map<String, Integer> sortedHashMap = new LinkedHashMap<>();
+        for (Map.Entry<String, Integer> entry : entryList) {
+            sortedHashMap.put(entry.getKey(), entry.getValue());
+        }
+        System.out.println(sortedHashMap);
     }
 }
